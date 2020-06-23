@@ -15,7 +15,12 @@ client.on('message', async (message) => {
     const input = message.content.slice(PREFIX.length).split(' ');
     const command = input.shift();
     if (commands[command] != null) {
-      message.channel.send(await commands[command].exec(input));
+      try {
+        message.channel.send(await commands[command].exec(input));
+      } catch (e) {
+        console.log(e);
+        message.channel.send(await commands[command].help);
+      }
     } else {
       console.log(`Ignoring unknown command`);
     }

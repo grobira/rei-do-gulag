@@ -6,7 +6,7 @@ const helpMessage = (command, args, description) => {
   embed.setTitle(`${command} Help`);
   embed.setColor('RED');
   embed.setDescription(`${description}`);
-  //embed.addField('Args', args, true);
+  embed.addField('Usage', `!command ${args}`, true);
   return embed;
 };
 
@@ -26,12 +26,16 @@ const addPlayer = (commandArgs) => {
 };
 
 const playerStats = async (commandArgs) => {
-  const [name, tag] = commandArgs;
+  let [name, tag] = commandArgs;
   let type = 'battle';
-  if (tag === '0') {
-    type = 'psn';
+
+  if (tag === '0' || tag == null) {
+    type = 'uno';
+    tag = '';
+  } else {
+    tag = `%2523${tag}`;
   }
-  const result = await api.get(`/warzone/${name}%2523${tag}/${type}`);
+  const result = await api.get(`/warzone/${name}${tag}/${type}`);
   let embed = new MessageEmbed();
   embed.setTitle(`${name}'s statistics`);
   embed.setColor('RED');
@@ -84,7 +88,7 @@ const commands = {
   ),
   stats: commandFactory(
     'stats',
-    'name, tag',
+    'name tag',
     'Get players stats',
     (commandArgs) => playerStats(commandArgs)
   ),
@@ -96,7 +100,7 @@ const commands = {
   ),
   addPlayer: commandFactory(
     'addPlayer',
-    'name, tag, type',
+    'name tag type',
     'Add new player to the list',
     (commandArgs) => addPlayer(commandArgs)
   ),
