@@ -1,0 +1,57 @@
+{
+    "extends": "eslint:recommended",
+    "env": {
+        "node": true,
+        "es6": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "parser": "babel-eslint",
+    "rules": {
+        "global-require": "error",
+        "no-buffer-constructor": "error",
+        "brace-style": [
+            "error",
+            "1tbs",
+            {
+                "allowSingleLine": true
+            }
+        ],
+        "camelcase": [
+            "error",
+            {
+                "ignoreDestructuring": true
+            }
+        ],
+        "no-array-constructor": "error",
+        "no-multi-assign": "error",
+        "no-multiple-empty-lines": "error",
+        "quote-props": [
+            "error",
+            "as-needed"
+        ],
+        "spaced-comment": [
+            "error",
+            "always"
+        ],
+        "no-duplicate-imports": "error",
+        "no-useless-computed-key": "error",
+        "no-var": "error",
+        "object-shorthand": [
+            "error",
+            "always",
+            {
+                "avoidExplicitReturnArrows": true
+            }
+        ],
+        "prefer-const": "error",
+        "prefer-destructuring": "warn",
+        "comma-dangle": 0,
+        "no-console": "off"
+    }
+}
