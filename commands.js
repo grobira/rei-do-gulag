@@ -25,6 +25,14 @@ const addPlayer = (commandArgs) => {
   return `New players added. With ${name}, ${tag}, ${type}`;
 };
 
+const callCodApi = async (name, tag, type) => {
+  let result = await api.get(`/warzone/${name}${tag}/${type}`);
+  if (result.data.error === true) {
+    result = await api.get(`/warzone/${name}${tag}/uno`);
+  }
+  return result;
+};
+
 const playerStats = async (commandArgs) => {
   let [name, tag] = commandArgs;
   let type = 'battle';
@@ -35,7 +43,7 @@ const playerStats = async (commandArgs) => {
   } else {
     tag = `%2523${tag}`;
   }
-  const result = await api.get(`/warzone/${name}${tag}/${type}`);
+  const result = await callCodApi(name, tag, type);
   let embed = new MessageEmbed();
   embed.setTitle(`${name}'s statistics`);
   embed.setColor('RED');
@@ -43,6 +51,9 @@ const playerStats = async (commandArgs) => {
   embed.setThumbnail(
     'https://www.callofduty.com/cdn/app/icons/mw/ranks/mp/icon_rank_155.png'
   );
+  //   embed.setThumbnail(
+  //     'https://www.callofduty.com/content/dam/atvi/callofduty/global/global-nav/shield_icon_no_drop.png'
+  //     );
   embed.addField('Lifetime', '\u200b', false);
   embed.addField(
     'Kills',
