@@ -6,13 +6,18 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
+    "cod": "nodemon",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Giovanni Robira",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.19.2",
-    "discord.js": "^12.2.0",
-    "dotenv": "^8.2.0"
+    "axios": "0.19.2",
+    "discord.js": "12.2.0",
+    "dotenv": "8.2.0",
+    "form-data": "3.0.0"
+  },
+  "devDependencies": {
+    "cross-env": "7.0.2"
   }
 }
