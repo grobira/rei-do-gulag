@@ -1,6 +1,10 @@
 {
-  "watch": ["src"],
+  "watch": [
+    "src"
+  ],
   "ext": "js",
-  "ignore": ["src/**/*.test.js"],
-  "exec": "cross-env node -r dotenv/config ./src/app.js"
+  "ignore": [
+    "src/**/*.test.js"
+  ],
+  "exec": "cross-env node -r dotenv/config ./src/index.js"
 }

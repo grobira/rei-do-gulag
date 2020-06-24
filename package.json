@@ -4,9 +4,8 @@
   "description": "Discord bot to give some members stats",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
-    "cod": "nodemon",
+    "start": "node src/index.js",
+    "dev": "nodemon",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Giovanni Robira",

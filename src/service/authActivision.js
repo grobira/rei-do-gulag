@@ -1,16 +1,7 @@
-const axios = require('axios');
+const { profileApi } = require('../config');
 var FormData = require('form-data');
 
-const { USERNAME, PASSWORD } = process.env;
-
-const profileApi = axios.create({
-  baseURL: 'https://profile.callofduty.com',
-  timeout: 25000,
-});
-
 const getCSRFToken = async () => {
-  let response;
-
   const request = {
     url: '/cod/login',
   };
@@ -19,31 +10,27 @@ const getCSRFToken = async () => {
     const { headers } = await profileApi(request);
 
     const cookies = headers['set-cookie'];
-    const cookieWithToken = cookies.find((cookie) => cookie.includes('XSRF'));
+    const tokenCookie = cookies.find((cookie) => cookie.includes('XSRF'));
 
-    const startingPosition = cookieWithToken.indexOf('XSRF');
-    const middlePosition = cookieWithToken.indexOf('=', startingPosition);
-    const finalPosition = cookieWithToken.indexOf(';', middlePosition);
+    tokenCookie = tokenCookie[0].split(';').shift();
 
-    const token = cookieWithToken.substring(middlePosition + 1, finalPosition);
+    const [, token] = tokenCookie.split('=');
 
-    response = token;
+    return token;
   } catch (error) {
     console.log('FAILED TO GET CSRF TOKEN');
     console.log(error.message);
     console.log(error.config);
-  }
 
-  return response;
+    throw new Error('FAILED TO GET CSRF TOKEN');
+  }
 };
 
 const getAuthToken = async (CSRFToken) => {
-  let response;
-
   const data = new FormData();
 
-  data.append('username', USERNAME);
-  data.append('password', PASSWORD);
+  data.append('username', process.env.ACTIVION_USER);
+  data.append('password', process.env.ACTIVION_PASSWORD);
   data.append('remember_me', 'true');
   data.append('_csrf', CSRFToken);
 
@@ -63,14 +50,14 @@ const getAuthToken = async (CSRFToken) => {
   try {
     const { status } = await profileApi(request);
 
-    response = status;
+    return status;
   } catch (error) {
     console.log('FAILED TO GET AUTH TOKEN');
     console.log(error.message);
     console.log(error.config);
-  }
 
-  return response;
+    throw new Error('FAILED TO GET AUTH TOKEN');
+  }
 };
 
 module.exports = { getCSRFToken, getAuthToken };

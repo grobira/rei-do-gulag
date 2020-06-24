@@ -1,13 +1,6 @@
-const axios = require('axios');
-
-const myCallOfDuty = axios.create({
-  baseURL: 'https://my.callofduty.com',
-  timeout: 25000,
-});
+const { myCallOfDuty } = require('../config');
 
 const getRecentMatch = async (CSRFToken) => {
-  let response;
-
   const paramsPath = {
     version: 'v2',
     game: 'mw',
@@ -27,13 +20,13 @@ const getRecentMatch = async (CSRFToken) => {
   try {
     const { data } = await myCallOfDuty(request);
 
-    response = data;
+    return data;
   } catch (error) {
-    console.log('ERRO AO TENTAR OBTER CSRF Token');
+    console.log('Failed to obtain recent matchs data');
     console.log(error.config);
-  }
 
-  return response;
+    throw new Error('Failed to obtain recent matchs data');
+  }
 };
 
 module.exports = { getRecentMatch };
