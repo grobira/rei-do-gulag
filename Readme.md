@@ -10,8 +10,8 @@ In order to install use the following command :
 #### How to Run
 
 In order to run you need to follow some steps to configure a running bot. You can learn how to do it [here](https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot).
-You'll need to get an API Key as well, you can find how to do it [here](https://docs.rapidapi.com/docs/keys#api-key-rotation-or-resetting-a-compromised-api-key)
-After setting things up, create your own `.env` file with you token and you own api key and use the following command :
+You'll need to an Activion account as well. So add your credentials as
+After setting things up, create your own `.env` file with your `ACTIVION_USER`, `ACTIVION_PASSWORD` and `DISCORD_TOKEN` and use the following command :
 `npm start`
 
 #### Commands
