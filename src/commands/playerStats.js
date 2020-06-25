@@ -1,25 +1,19 @@
 const { MessageEmbed } = require('discord.js');
-const { api } = require('../config');
+const { getPlayerInfo } = require('../service/callOfDuty.api');
 
-const callCodApi = async (name, tag, type) => {
-  let result = await api.get(`/warzone/${name}${tag}/${type}`);
-  if (result.data.error === true) {
-    result = await api.get(`/warzone/${name}${tag}/uno`);
-  }
+const callCodApi = async (player) => {
+  // let result = await api.get(`/warzone/${name}${tag}/${type}`);
+  // if (result.data.error === true) {
+  //   result = await api.get(`/warzone/${name}${tag}/uno`);
+  // }
+  const result = getPlayerInfo(player);
   return result;
 };
 
 const playerStats = async (commandArgs) => {
-  let [name, tag] = commandArgs;
-  let type = 'battle';
+  let [name, tag, type] = commandArgs;
 
-  if (tag === '0' || tag == null) {
-    type = 'uno';
-    tag = '';
-  } else {
-    tag = `%2523${tag}`;
-  }
-  const result = await callCodApi(name, tag, type);
+  const result = await callCodApi({ name, tag, type });
   let embed = new MessageEmbed();
   embed.setTitle(`${name}'s statistics`);
   embed.setColor('RED');

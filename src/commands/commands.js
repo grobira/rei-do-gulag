@@ -4,10 +4,10 @@ const { playerStats } = require('./playerStats');
 
 const helpMessage = (command, args, description) => {
   let embed = new MessageEmbed();
-  embed.setTitle(`${command} Help`);
+  embed.setTitle(`Help for \`${command}\` command`);
   embed.setColor('RED');
   embed.setDescription(`${description}`);
-  embed.addField('Usage', `!command ${args}`, true);
+  embed.addField('Usage', `\`!command ${args}\``, true);
   return embed;
 };
 

@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon",
+    "cod": "cross-env node -r dotenv/config ./src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Giovanni Robira",

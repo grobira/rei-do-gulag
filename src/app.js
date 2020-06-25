@@ -1,9 +1,6 @@
-const {
-  getCSRFToken,
-  getAuthToken,
-} = require('./service/profileCallOffDuty.api');
+const { getCSRFToken, getAuthToken } = require('./service/authActivision');
 
-const { getRecentMatch } = require('./service/myCallOfDuty.api');
+const { getRecentMatch, getPlayerInfo } = require('./service/callOfDuty.api');
 
 const run = async () => {
   const CSRFToken = await getCSRFToken();
@@ -12,7 +9,8 @@ const run = async () => {
 
   await getAuthToken(CSRFToken);
 
-  const response = await getRecentMatch(CSRFToken);
+  //const response = await getRecentMatch(CSRFToken);
+  const response = await getPlayerInfo(CSRFToken);
 
   console.log('FINAL RESPONSE -> ' + JSON.stringify(response, null, 2));
 

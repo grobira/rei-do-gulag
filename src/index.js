@@ -18,7 +18,7 @@ client.on('message', async (message) => {
       try {
         message.channel.send(await commands[command].exec(input));
       } catch (e) {
-        console.log(e);
+        console.log(e.message);
         message.channel.send(await commands[command].help);
       }
     } else {
