@@ -7,6 +7,19 @@
 
 The best discord bot to follow your stats.
 
+## Objectives
+
+- [x] :rocket: Running bot
+- [x] :rocket: Consume some Call of Duty API
+- [x] :signal_strength:`Stat` command
+- [ ] :sos:`Help` command
+- [ ] :file_folder:Persistence to store registered players
+- [ ] :bust_in_silhouette:`addPlayer` command
+- [ ] :book:`Recent` matches command
+- [ ] :arrow_upper_left:`Track` command
+- [ ] :twisted_rightwards_arrows:Compare player stats
+- [ ] :crown:`Leaderboard` command
+
 ## How to Install
 
 In order to install use the following command :
@@ -23,16 +36,9 @@ After setting things up, create your own `.env` file with your `ACTIVION_USER`, 
 
 - stats
 
-## RoadMap
-
-- New commands
-  - create a list of players to follow their stats
-  - rank of saved players list
-  - _King of gulag_ - know how is the best player in the gulag
-
 ## Contributors
 
 Thanks to the following people who have contributed to this project:
 
-* [@grobira](https://github.com/grobira) 📖
-* [@Luckstai](https://github.com/Luckstai) 🐛
+- [@grobira](https://github.com/grobira) 📖
+- [@Luckstai](https://github.com/Luckstai) 🐛
