@@ -3,7 +3,7 @@ require('dotenv').config();
 const Discord = require('discord.js');
 
 const client = new Discord.Client();
-const commands = require('./commands');
+const commands = require('./commands/commands');
 const PREFIX = '!';
 
 client.on('ready', () => {
@@ -18,7 +18,7 @@ client.on('message', async (message) => {
       try {
         message.channel.send(await commands[command].exec(input));
       } catch (e) {
-        console.log(e);
+        console.log(e.message);
         message.channel.send(await commands[command].help);
       }
     } else {
