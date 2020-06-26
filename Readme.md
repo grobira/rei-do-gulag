@@ -1,5 +1,6 @@
 # Rei do Gulag
 
+![Node.js CI](https://github.com/grobira/rei-do-gulag/workflows/Node.js%20CI/badge.svg)
 ![GitHub repo size](https://img.shields.io/github/repo-size/grobira/rei-do-gulag)
 ![GitHub contributors](https://img.shields.io/github/contributors/grobira/rei-do-gulag)
 ![GitHub stars](https://img.shields.io/github/stars/grobira/rei-do-gulag?style=social)
